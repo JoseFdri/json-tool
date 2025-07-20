@@ -118,10 +118,10 @@ export function ResizableEditors(props: Props) {
   const onClassNameA = useCallback((path: string[], value: any): string => {
     const pathString = path.join(".");
 
-    if ((diff.JsonA.modified as string[]).includes(pathString)) {
+    if ((diff.JsonA.modified as string[]).includes(pathString) || (diff.JsonA.modified as string[]).includes(path[0]) ) {
       return "json-diff-modified";
     }
-		if ((diff.JsonA.deleted as string[]).includes(pathString)) {
+		if ((diff.JsonA.deleted as string[]).includes(pathString) || (diff.JsonA.deleted as string[]).includes(path[0])) {
       return "json-diff-deleted";
     }
     console.log('onClassNameA', pathString, value);
@@ -130,10 +130,10 @@ export function ResizableEditors(props: Props) {
 
   const onClassNameB = useCallback((path: string[], value: any): string => {
 		const pathString = path.join(".");
-		if ((diff.JsonB.modified as string[]).includes(pathString)) {
+		if ((diff.JsonB.modified as string[]).includes(pathString) || (diff.JsonB.modified as string[]).includes(path[0])) {
       return "json-diff-modified";
     }
-		if ((diff.JsonB.added as string[]).includes(pathString)) {
+		if ((diff.JsonB.added as string[]).includes(pathString) || (diff.JsonB.added as string[]).includes(path[0])) {
       return "json-diff-added";
     }
 
