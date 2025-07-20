@@ -1,0 +1,291 @@
+<!doctype html>
+<html>
+  <head>
+    <link rel="stylesheet" href="./style.css" type="text/css" />
+    <link
+      rel="stylesheet"
+      href="https://esm.sh/jsondiffpatch@0.6.0/lib/formatters/styles/html.css"
+      type="text/css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://esm.sh/jsondiffpatch@0.6.0/lib/formatters/styles/annotated.css"
+      type="text/css"
+    />
+  </head>
+  <body>
+    <div id="visual"></div>
+    <hr />
+    <div id="annotated"></div>
+    <script type="module">
+      import * as jsondiffpatch from 'https://esm.sh/jsondiffpatch@0.6.0';
+      import * as annotatedFormatter from 'https://esm.sh/jsondiffpatch@0.6.0/formatters/annotated';
+      import * as htmlFormatter from 'https://esm.sh/jsondiffpatch@0.6.0/formatters/html';
+
+      const left = [
+  {
+    "data": {
+      
+      "genericTokenBalances": [
+        {
+          "genericToken": {
+            "chainId": 3,
+            "chainType": "lol",
+            "location": "0x0000000000000000000000000000000000000000",
+            "symbol": "ETH",
+            "name": "Ethereum"
+          },
+          "owner": {
+            "address": "0xffffffff000000000000000000000000000365e3"
+          }
+        },
+        {
+          "amount": "0",
+          "genericToken": {
+            "chainId": 1,
+            "chainType": "evm",
+            "location": "0x0000000000000000000000000000000000000000",
+            "symbol": "ETH",
+            "name": "Ethereum",
+            "decimals": 18
+          },
+          "owner": {
+            "address": "0x2c49f7845620faf5ea015745b1bb1f569970f867"
+          }
+        },
+        {
+          "amount": "0",
+          "genericToken": {
+            "chainId": 1,
+            "chainType": "evm",
+            "location": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+            "symbol": "USDT",
+            "name": "Tether USD",
+            "decimals": 6
+          },
+          "owner": {
+            "address": "0xffffffff000000000000000000000000000365e3"
+          }
+        },
+        {
+          "amount": "0",
+          "genericToken": {
+            "chainId": 1,
+            "chainType": "evm",
+            "location": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+            "symbol": "USDT",
+            "name": "Tether USD",
+            "decimals": 6
+          },
+          "owner": {
+            "address": "0x2c49f7845620faf5ea015745b1bb1f569970f867"
+          }
+        },
+        {
+          "amount": "0",
+          "genericToken": {
+            "chainId": 1,
+            "chainType": "evm",
+            "location": "0x6b175474e89094c44da98b954eedeac495271d0f",
+            "symbol": "DAI",
+            "name": "Dai Stablecoin",
+            "decimals": 18
+          },
+          "owner": {
+            "address": "0xffffffff000000000000000000000000000365e3"
+          }
+        },
+        {
+          "amount": "0",
+          "genericToken": {
+            "chainId": 1,
+            "chainType": "evm",
+            "location": "0x6b175474e89094c44da98b954eedeac495271d0f",
+            "symbol": "DAI",
+            "name": "Dai Stablecoin",
+            "decimals": 18
+          },
+          "owner": {
+            "address": "0x2c49f7845620faf5ea015745b1bb1f569970f867"
+          }
+        },
+        {
+          "amount": "245253720000",
+          "genericToken": {
+            "chainId": 7668,
+            "chainType": "root",
+            "location": "1",
+            "symbol": "ROOT",
+            "name": "Root",
+            "decimals": 6
+          },
+          "owner": {
+            "address": "0x2c49f7845620faf5ea015745b1bb1f569970f867"
+          }
+        },
+        {
+          "amount": "1000000000",
+          "genericToken": {
+            "chainId": 7668,
+            "chainType": "root",
+            "location": "1",
+            "symbol": "ROOT",
+            "name": "Root",
+            "decimals": 6
+          },
+          "owner": {
+            "address": "0xffffffff000000000000000000000000000365e3"
+          }
+        }
+      ]
+    }
+  }
+];
+      const right = [
+  {
+    "data": {
+      
+      "genericTokenBalances": [
+        {
+          "genericToken": {
+            "chainId": 2,
+            "chainType": "evm",
+            "location": "0x0000000000000000000000000000000000000000",
+            "symbol": "ETH",
+            "debugg": 1,
+          },
+          "owner": {
+            "address": "0xffffffff000000000000000000000000000365e3"
+          }
+        },
+        {
+          "amount": "0",
+          "genericToken": {
+            "chainId": 1,
+            "chainType": "evm",
+            "location": "0x0000000000000000000000000000000000000000",
+            "symbol": "ETH",
+            "name": "Ethereum",
+            "decimals": 18
+          },
+          "owner": {
+            "address": "0x2c49f7845620faf5ea015745b1bb1f569970f867"
+          }
+        },
+        {
+          "amount": "0",
+          "genericToken": {
+            "chainId": 1,
+            "chainType": "evm",
+            "location": "2",
+            "symbol": "USDT",
+            "name": "Tether USD",
+            "decimals": 6
+          },
+          "owner": {
+            "address": "0xffffffff000000000000000000000000000365e3"
+          }
+        },
+        {
+          "amount": "0",
+          "genericToken": {
+            "chainId": 1,
+            "chainType": "evm",
+            "location": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+            "symbol": "USDT",
+            "name": "Tether USD",
+            "decimals": 6
+          },
+          "owner": {
+            "address": "0x2c49f7845620faf5ea015745b1bb1f569970f867"
+          }
+        },
+        {
+          "amount": "0",
+          "genericToken": {
+            "chainId": 1,
+            "chainType": "evm",
+            "location": "0x6b175474e89094c44da98b954eedeac495271d0f",
+            "symbol": "DAI",
+            "name": "Dai Stablecoin",
+            "decimals": 18
+          },
+          "owner": {
+            "address": "0xffffffff000000000000000000000000000365e3"
+          }
+        },
+        {
+          "amount": "0",
+          "genericToken": {
+            "chainId": 1,
+            "chainType": "evm",
+            "location": "0x6b175474e89094c44da98b954eedeac495271d0f",
+            "symbol": "DAI",
+            "name": "Dai Stablecoin",
+            "decimals": 18
+          },
+          "owner": {
+            "address": "0x2c49f7845620faf5ea015745b1bb1f569970f867"
+          }
+        },
+        {
+          "amount": "245253720000",
+          "genericToken": {
+            "chainId": 7668,
+            "chainType": "root",
+            "location": "1",
+            "symbol": "ROOT",
+            "name": "Root",
+            "decimals": 6
+          },
+          "owner": {
+            "address": "0x2c49f7845620faf5ea015745b1bb1f569970f867"
+          }
+        },
+        {
+          "amount": "1000000000",
+          "genericToken": {
+            "chainId": 7668,
+            "chainType": "root",
+            "location": "1",
+            "symbol": "ROOT",
+            "name": "Root",
+            "decimals": 6
+          },
+          "owner": {
+            "address": "0xffffffff000000000000000000000000000365e3"
+          }
+        },
+        {
+          "amount": "1000000000",
+          "genericToken": {
+            "chainId": 7668,
+            "chainType": "root",
+            "location": "1",
+            "symbol": "ROOT",
+            "name": "Root",
+            "decimals": 6
+          },
+          "owner": {
+            "address": "0xffffffff000000000000000000000000000365e3"
+          }
+        }
+      ]
+    }
+  }
+];
+      const delta = jsondiffpatch.diff(left, right);
+
+      // beautiful html diff
+      document.getElementById('visual').innerHTML = htmlFormatter.format(
+        delta,
+        left,
+      );
+      console.log('delta', JSON.stringify(delta), delta)
+
+      // self-explained json
+      document.getElementById('annotated').innerHTML =
+        annotatedFormatter.format(delta, left);
+    </script>
+  </body>
+</html>
