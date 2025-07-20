@@ -31,9 +31,7 @@ body {
   --jse-context-menu-pointer-hover-background: hsl(8, 67%, 54%);
   --jse-context-menu-pointer-background-highlight: hsl(8, 57%, 44%);
   --jse-context-menu-pointer-background: hsl(8, 47%, 34%);
-  --jse-collapsed-items-background-color: var(
-    --jse-selection-background-inactive-color
-  );
+  --jse-collapsed-items-background-color: var(--jse-selection-background-inactive-color);
   --jse-collapsed-items-selected-background-color: hsl(8, 67%, 54%);
   color: #000000e6
 }
@@ -46,27 +44,23 @@ body {
   --jse-context-menu-pointer-hover-background: hsl(41, 67%, 54%);
   --jse-context-menu-pointer-background-highlight: hsl(41, 57%, 44%);
   --jse-context-menu-pointer-background: hsl(41, 47%, 34%);
-  --jse-collapsed-items-background-color: var(
-    --jse-selection-background-inactive-color
-  );
+  --jse-collapsed-items-background-color: var(--jse-selection-background-inactive-color);
   --jse-collapsed-items-selected-background-color: hsl(41, 67%, 54%);
   color: #000000e6
 }
 
 .json-diff-added.svelte-oawf7x {
-  --jse-contents-background-color: hsl(8, 87%, 74%);
-  --jse-selection-background-color: hsl(8, 67%, 64%);
-  --jse-selection-background-inactive-color: hsl(8, 77%, 69%);
-  --jse-hover-background-color: hsl(8, 77%, 69%);
-  --jse-context-menu-pointer-hover-background: hsl(8, 67%, 54%);
-  --jse-context-menu-pointer-background-highlight: hsl(8, 57%, 44%);
-  --jse-context-menu-pointer-background: hsl(8, 47%, 34%);
-  --jse-collapsed-items-background-color: var(
-    --jse-selection-background-inactive-color
-  );
-  --jse-collapsed-items-selected-background-color: hsl(8, 67%, 54%);
-  color: #000000e6
+  --jse-contents-background-color: hsl(76, 52%, 70%);
+  --jse-selection-background-color: hsl(76, 32%, 60%);
+  --jse-selection-background-inactive-color: hsl(76, 42%, 65%);
+  --jse-hover-background-color: hsl(76, 42%, 65%);
+  --jse-context-menu-pointer-hover-background: hsl(76, 32%, 50%);
+  --jse-context-menu-pointer-background-highlight: hsl(76, 22%, 40%);
+  --jse-context-menu-pointer-background: hsl(76, 12%, 30%);
+  --jse-collapsed-items-background-color: var(--jse-selection-background-inactive-color);
+  --jse-collapsed-items-selected-background-color: hsl(76, 32%, 50%);
 }
+
 .json-diff-modified.svelte-oawf7x .jse-key {
   color: #000000e6
 }
