@@ -97,6 +97,7 @@ export const Tab = ({
         setRightMode={setRightEditorView}
         onLeftChange={onLeftChange}
         onRightChange={onRightChange}
+        isCompare={compare}
       />
     </Tabs.Content>
   );

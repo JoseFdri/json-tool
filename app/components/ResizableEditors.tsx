@@ -20,6 +20,7 @@ type Props = {
   setRightMode: (mode: "tree" | "text" | "table") => void;
   onLeftRenderValue?: OnRenderValue;
   onRightRenderValue?: OnRenderValue;
+  isCompare?: boolean; // Whether to show diff
 };
 
 export function ResizableEditors(props: Props) {
@@ -37,6 +38,7 @@ export function ResizableEditors(props: Props) {
     setRightMode,
     onLeftRenderValue,
     onRightRenderValue,
+    isCompare = false,
   } = props;
 
   const containerRef = useRef<HTMLDivElement>(null);
@@ -117,6 +119,9 @@ export function ResizableEditors(props: Props) {
   // console.log('debugg', leftValue, rightValue, leftDiffPaths, rightDiffPaths, leftSelection, rightSelection);
   console.log('diff', diff);
   const onClassNameA = useCallback((path: string[], value: any): string => {
+    if(!isCompare) {
+      return "";
+    }
     const pathString = path.join(".");
     console.log('_diff', diff)
     console.log('onClassNameA', pathString, (diff.JsonA.modified as string[]).includes(pathString), (diff.JsonA.deleted as string[]).includes(pathString));
@@ -131,6 +136,9 @@ export function ResizableEditors(props: Props) {
   }, [diff]);
 
   const onClassNameB = useCallback((path: string[], value: any): string => {
+     if(!isCompare) {
+      return "";
+    }
 		const pathString = path.join(".");
 		if ((diff.JsonB.modified as string[]).includes(pathString) || (diff.JsonB.modified as string[]).includes(path[0])) {
       return "json-diff-modified";
