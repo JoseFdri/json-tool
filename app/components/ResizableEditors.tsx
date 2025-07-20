@@ -53,6 +53,7 @@ export function ResizableEditors(props: Props) {
       }
     }
   }, []);
+
   useEffect(() => {
     if (typeof window !== "undefined") {
       localStorage.setItem("jsonEditorLeftWidth", String(leftWidth));
@@ -111,22 +112,23 @@ export function ResizableEditors(props: Props) {
     rightObj = JSON.parse(rightValue);
   } catch {}
 
-  // Compute diffs in both directions
-  const diff = getDiff(leftObj, rightObj)
+  const diff = useMemo(() => getDiff(leftObj, rightObj), [leftObj, rightObj]);
+  
   // console.log('debugg', leftValue, rightValue, leftDiffPaths, rightDiffPaths, leftSelection, rightSelection);
   console.log('diff', diff);
   const onClassNameA = useCallback((path: string[], value: any): string => {
     const pathString = path.join(".");
-
+    console.log('_diff', diff)
+    console.log('onClassNameA', pathString, (diff.JsonA.modified as string[]).includes(pathString), (diff.JsonA.deleted as string[]).includes(pathString));
     if ((diff.JsonA.modified as string[]).includes(pathString) || (diff.JsonA.modified as string[]).includes(path[0]) ) {
       return "json-diff-modified";
     }
 		if ((diff.JsonA.deleted as string[]).includes(pathString) || (diff.JsonA.deleted as string[]).includes(path[0])) {
       return "json-diff-deleted";
     }
-    console.log('onClassNameA', pathString, value);
+    
     return "";
-  }, []);
+  }, [diff]);
 
   const onClassNameB = useCallback((path: string[], value: any): string => {
 		const pathString = path.join(".");
@@ -139,7 +141,7 @@ export function ResizableEditors(props: Props) {
 
     console.log('onClassNameB', pathString, value);
     return "";
-  }, []);
+  }, [diff]);
 
   return (
     <div
