@@ -1,5 +1,5 @@
 import dynamic from "next/dynamic";
-import React from "react";
+import React, { memo } from "react";
 
 const JSONEditorReact = dynamic(() => import("../../JSONEditorReact"), {
   ssr: false,
@@ -21,55 +21,50 @@ export interface JsonEditorWrapperProps {
 /**
  * A modular wrapper for the JSON editor, handling valid/invalid JSON gracefully.
  */
-const JsonEditorWrapper: React.FC<JsonEditorWrapperProps> = ({
-  value,
-  onChange,
-  disabled,
-  mode,
-  onRenderMenu,
-  onChangeMode,
-  onRenderValue,
-  onClassName,
-}) => {
-  // Only pass json or text, never both
-  const content = React.useMemo(() => {
-    try {
-      return { json: JSON.parse(value) };
-    } catch {
-      return { text: value };
-    }
-  }, [value]);
+const JsonEditorWrapper: React.FC<JsonEditorWrapperProps> = memo(
+  ({
+    value,
+    onChange,
+    disabled,
+    mode,
+    onRenderMenu,
+    onChangeMode,
+    onRenderValue,
+    onClassName,
+  }) => {
 
-  const handleChange = React.useCallback(
-    (content: any) => {
-      if (typeof content.text === "string" && onChange) {
-        onChange(content.text);
-      } else if (content.json !== undefined && onChange) {
-        try {
-          onChange(JSON.stringify(content.json, null, 2));
-        } catch {
-          onChange("");
+    const handleChange = React.useCallback(
+      (content: any) => {
+        console.log("content changed", content.text);
+        if (typeof content.text === "string" && onChange) {
+          onChange(content.text);
+        } else if (content.json !== undefined && onChange) {
+          try {
+            onChange(JSON.stringify(content.json, null, 2));
+          } catch {
+            onChange("");
+          }
         }
-      }
-    },
-    [onChange]
-  );
+      },
+      [onChange]
+    );
 
-  return (
-    <div style={{ width: "100%", height: "100%", minHeight: 200 }}>
-      <JSONEditorReact
-        content={content}
-        readOnly={disabled}
-        mode={mode}
-        onChange={handleChange}
-        mainMenuBar={false}
-        onRenderMenu={onRenderMenu}
-        onChangeMode={onChangeMode}
-        onRenderValue={onRenderValue}
-        onClassName={onClassName}
-      />
-    </div>
-  );
-};
+    return (
+      <div style={{ width: "100%", height: "100%", minHeight: 200 }}>
+        <JSONEditorReact
+          content={{ text: value }}
+          readOnly={disabled}
+          mode={mode}
+          onChange={handleChange}
+          mainMenuBar={false}
+          onRenderMenu={onRenderMenu}
+          onChangeMode={onChangeMode}
+          onRenderValue={onRenderValue}
+          onClassName={onClassName}
+        />
+      </div>
+    );
+  }
+);
 
 export default JsonEditorWrapper;

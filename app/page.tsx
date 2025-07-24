@@ -2,14 +2,12 @@
 import * as React from "react";
 import { Tabs, Button, Flex, Box, Separator } from "@radix-ui/themes";
 import { Tab } from "./components/Tab";
-import { useState, memo } from "react";
 import { useHydratedState } from "./hooks/useHydrateState";
 
 type Tab = {
   id: string;
   label: string;
 };
-type JsonMap = { [tabId: string]: string };
 
 const LOCAL_STORAGE_KEYS = {
   tabs: "jsonEditorTabs",

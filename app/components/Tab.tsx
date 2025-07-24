@@ -50,12 +50,6 @@ export const Tab = ({
       data: defaultJson,
     }
   );
-  // Tab CRUD
-/*   const handleAddTab = () => {
-    const newId = `tab-${id}`;
-    setJsonA((prev) => ({ ...prev, tabId: newId }));
-    setJsonB((prev) => ({ ...prev, tabId: newId }));
-  }; */
 
   useEffect(() => {
     if (!compare) {
@@ -70,6 +64,7 @@ export const Tab = ({
 	}, [setJsonA]);
 
 	const onRightChange = useCallback((value: string) => {
+		console.log('prop changed', value)
 		setJsonB((prev) => ({ ...prev, data: value }));
 	}, [setJsonB]);
 

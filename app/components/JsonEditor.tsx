@@ -1,5 +1,4 @@
 import JsonEditorWrapper from "./JsonEditorWrapper";
-import { useState, memo } from "react";
 import { Button, Flex } from "@radix-ui/themes";
 import type { OnRenderValue } from "vanilla-jsoneditor";
 import { useEffect } from "react";
