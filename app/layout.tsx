@@ -16,7 +16,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "JSON Tools",
+  title: "Cool JSON Tools",
   description: "A set of tools for working with JSON data",
 };
 

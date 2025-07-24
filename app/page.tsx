@@ -88,7 +88,54 @@ export default function Home() {
   };
 
   return (
-    <Box p="6" >
+    <Box p="6">
+      <Flex
+        mt="2"
+        p="3"
+        style={{
+          background: "#18181b",
+          color: "#a3e635",
+          borderRadius: 8,
+          fontFamily: "monospace",
+          fontSize: 15,
+          boxShadow: "0 2px 8px #0002",
+        }}
+      >
+        {
+          [
+            "¯\\_(ツ)_/¯ // TODO: Refactor this later",
+            "while(!asleep) {countSheep();}",
+            "console.log('Hello, debugger!')",
+            "git commit -m 'fixed it for real this time'",
+            "There are 10 types of people: those who understand binary and those who don't.",
+            "404: Coffee Not Found",
+            "sudo make me a sandwich",
+            "<!-- Here be dragons -->",
+            "npm install --save sanity",
+            "It's not a bug, it's a feature.",
+            "Works on my machine.",
+            "rm -rf / --no-preserve-root",
+            "I have a joke on async, but you might not get it.",
+            "Keep calm and merge conflicts.",
+            "Code never lies, comments sometimes do.",
+            "Did you try turning it off and on again?",
+            "Stack Overflow is my co-pilot.",
+            "Escape the semicolon!",
+            "I see deadlocks.",
+            "Will code for coffee.",
+            "Ship it!",
+            "Refactoring is my cardio.",
+            "Rubber duck debugging in progress.",
+            "Eat, Sleep, Code, Repeat.",
+            "Semicolons are optional, sanity is not.",
+            "99 little bugs in the code, take one down, patch it around...",
+            "I survived another deployment.",
+            "May the source be with you.",
+            "Hello world!",
+            "Code hard or go home.",
+          ][Math.floor(Math.random() * 29)]
+        }
+      </Flex>
       <Tabs.Root
         value={activeTab}
         onValueChange={setActiveTab}
@@ -170,10 +217,7 @@ export default function Home() {
         </Flex>
         <Separator my="3" size="4" />
         {tabs.map((tab) => (
-          <Tab
-            key={tab.id}
-            id={tab.id}
-          />
+          <Tab key={tab.id} id={tab.id} />
         ))}
       </Tabs.Root>
     </Box>
