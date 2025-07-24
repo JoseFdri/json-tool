@@ -25,14 +25,6 @@ export function JsonEditor({
   setView,
   onClassName,
 }: JsonEditorProps) {
-  let parsed: any = null;
-  let error: string | null = null;
-
-  try {
-    parsed = JSON.parse(value);
-  } catch (e) {
-    error = "Invalid JSON";
-  }
 
   useEffect(() => {
     if (onModeChange) {

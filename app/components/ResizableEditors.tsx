@@ -4,6 +4,7 @@ import { getDiff } from "../utils/jsonDiff";
 import { JsonEditor } from "./JsonEditor";
 import { useMemo } from "react";
 import type { OnRenderValue } from "vanilla-jsoneditor";
+import { parse } from "lossless-json";
 
 type Props = {
   leftValue: string;
@@ -108,10 +109,10 @@ export function ResizableEditors(props: Props) {
   let leftObj: any = null;
   let rightObj: any = null;
   try {
-    leftObj = JSON.parse(leftValue);
+    leftObj = parse(leftValue);
   } catch {}
   try {
-    rightObj = JSON.parse(rightValue);
+    rightObj = parse(rightValue);
   } catch {}
 
   const diff = useMemo(() => getDiff(leftObj, rightObj), [leftObj, rightObj]);
