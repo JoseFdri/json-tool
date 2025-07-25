@@ -24,7 +24,6 @@ export function JsonEditor({
   setView,
   onClassName,
 }: JsonEditorProps) {
-
   useEffect(() => {
     if (onModeChange) {
       onModeChange(view);

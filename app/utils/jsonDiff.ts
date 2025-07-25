@@ -30,11 +30,17 @@ export const getDiff = (jsonA: any, jsonB: any) => {
     } else if (Array.isArray(obj)) {
       // Added: [newValue]
       if (obj.length === 1) {
+        if (path[path.length - 1] === "value") {
+          path.pop()
+        }
         // @ts-ignore
         result.JsonB.added.push(path.join("."));
       }
       // Modified: [oldValue, newValue]
       else if (obj.length === 2) {
+        if (path[path.length - 1] === "value") {
+          path.pop()
+        }
         // @ts-ignore
         result.JsonA.modified.push(path.join("."));
         // @ts-ignore
@@ -42,13 +48,21 @@ export const getDiff = (jsonA: any, jsonB: any) => {
       }
       // Deleted: [oldValue, 0, 0]
       else if (obj.length === 3) {
+        if (path[path.length - 1] === "value") {
+          path.pop()
+        }
         // @ts-ignore
         result.JsonA.deleted.push(path.join("."));
         // @ts-ignore
         result.JsonB.deleted.push(path.join("."));
+        // @ts-ignore
+        result.JsonB.added.push(path.join("."));
       }
       // Text diff: [unidiff, 0, 2]
       else if (obj.length === 3 && obj[2] === 2) {
+        if (path[path.length - 1] === "value") {
+          path.pop()
+        }
         // @ts-ignore
         result.JsonA.modified.push(path.join("."));
         // @ts-ignore

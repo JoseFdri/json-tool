@@ -4,6 +4,7 @@ import "./globals.css";
 import { Theme } from "@radix-ui/themes";
 import "@radix-ui/themes/styles.css";
 import 'vanilla-jsoneditor/themes/jse-theme-dark.css';
+import { Analytics } from "@vercel/analytics/next"
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -32,6 +33,7 @@ export default function RootLayout({
       > 
       <Theme appearance="dark">
         {children}
+        <Analytics />
       </Theme>
       </body>
     </html>

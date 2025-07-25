@@ -1,6 +1,6 @@
 "use client";
 import * as React from "react";
-import { Tabs, Button, Flex, Box, Separator } from "@radix-ui/themes";
+import { Tabs, Button, Flex, Box, Separator, Text } from "@radix-ui/themes";
 import { Tab } from "./components/Tab";
 import { useHydratedState } from "./hooks/useHydrateState";
 
@@ -167,19 +167,16 @@ export default function Home() {
                       }}
                     />
                   ) : (
-                    <span
+                    <Flex
                       onDoubleClick={(e) => {
                         e.stopPropagation();
                         startEditTab(tab.id, tab.label);
                       }}
-                      style={{
-                        cursor: "pointer",
-                        minWidth: 60,
-                        display: "inline-block",
-                      }}
+                      className="cursor-pointer"
+                      maxWidth={`120px`}
                     >
-                      {tab.label}
-                    </span>
+                      <Text truncate={true}>{tab.label}</Text>
+                    </Flex>
                   )}
                 </Tabs.Trigger>
                 {tabs.length > 1 && (

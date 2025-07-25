@@ -1,11 +1,6 @@
 import { Tabs, Checkbox, Flex } from "@radix-ui/themes";
 import { ResizableEditors } from "./ResizableEditors";
-import { useEffect, useState, useMemo, useCallback } from "react";
-import type {
-  OnRenderValue,
-  RenderValueProps,
-  RenderValueComponentDescription,
-} from "vanilla-jsoneditor";
+import { useEffect, useState, useCallback } from "react";
 import { useHydratedState } from "../hooks/useHydrateState";
 
 type Props = {
